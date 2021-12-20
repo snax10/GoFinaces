@@ -1,5 +1,10 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { NavigationContainer } from "@react-navigation/native";
+import { AppRoutes } from './src/routes/app.routes'
+
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
 import {
   useFonts,
@@ -11,8 +16,6 @@ import {
 import AppLoading from "expo-app-loading";
 
 import GlobalStyle from "./src/global/styles/theme";
-
-import { Dashboard } from "./src/screens/Dashboard";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +30,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={GlobalStyle}>
-      <Dashboard />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
